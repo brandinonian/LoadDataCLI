@@ -1,6 +1,4 @@
-﻿using ReloadingClasses;
-
-namespace LoadDataCLI.CustomLoads {
+﻿namespace LoadDataCLI.CustomLoads {
     public class CustomLoadSelection {
         // TODO: Break this apart into smaller chunks before adding the complete list of params
 

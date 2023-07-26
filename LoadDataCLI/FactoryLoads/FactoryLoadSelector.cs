@@ -1,31 +1,38 @@
-﻿using ReloadingClasses;
+﻿namespace LoadDataCLI {
 
-namespace LoadDataCLI.FactoryLoads {
-
-    public class FactoryLoadSelection {
+    public class FactoryLoadSelector {
         // entry point
-        // TODO: accept a list as an argument and return a load/list
-        public void Run() {
+        public static FactoryLoad Init(List<FactoryLoad> data) {
             Console.WriteLine("Factory Loads");
 
             // select the cartridge
-            string cartridgeName = SelectCartridge();
+            string cartridgeName = SelectCartridge(data);
 
             // select the manufacturer
-            string manufacturerName = SelectManufacturer(cartridgeName);
+            string manufacturerName = SelectManufacturer(data, cartridgeName);
 
             // TODO: would be nice to combine name and weight, possibly parse the weight to a string?
             // then select the bullet weight
-            double bulletWeight = SelectBulletWeight(cartridgeName, manufacturerName);
+            double bulletWeight = SelectBulletWeight(data, cartridgeName, manufacturerName);
 
             // then select the bullet name
-            string bulletName = SelectBulletName(cartridgeName, manufacturerName, bulletWeight);
+            string bulletName = SelectBulletName(data, cartridgeName, manufacturerName, bulletWeight);
 
-            // TODO display the load information
+            // store the selected load in a variable
+            FactoryLoad result;
+
+            // catch null exceptions
+            try {
+                result = GetFilteredLoad(data, cartridgeName, manufacturerName, bulletWeight, bulletName);
+            }
+            catch (Exception) {
+                throw new Exception("No load found...");
+            }
+
+            // return the selected load
+            return result;
+            
         }
-
-        // TODO get load data
-        List<FactoryLoad> factoryLoads = new List<FactoryLoad>();
 
 
         //
@@ -33,18 +40,18 @@ namespace LoadDataCLI.FactoryLoads {
         //
 
         // prompt the user to select a cartridge, return the name as a string
-        public string SelectCartridge() {
+        public static string SelectCartridge(List<FactoryLoad> data) {
 
             // variables to hold results
             string result;
             int userSelection = 0;
 
             // get the list of cartridges
-            List<string> cartridgeList = GetCartridgeList();
+            List<string> cartridgeList = GetCartridgeList(data);
 
             // display the numbered list of cartridges
             // check for null values and do not include
-            for (int i = 0; i < cartridgeList.Count; i++) {
+            for(int i = 0; i < cartridgeList.Count; i++) {
                 Console.WriteLine($"[{i + 1}]: {cartridgeList[i]}");
             }
 
@@ -55,7 +62,7 @@ namespace LoadDataCLI.FactoryLoads {
             try {
                 userSelection = int.Parse(Console.ReadLine());
             }
-            catch (Exception e) {
+            catch(Exception e) {
                 Console.WriteLine(e);
             }
 
@@ -67,19 +74,19 @@ namespace LoadDataCLI.FactoryLoads {
         }
 
 
-        public List<string> GetCartridgeList() {
+        public static List<string> GetCartridgeList(List<FactoryLoad> data) {
 
             // list to hold results
             List<string> result = new List<string>();
 
             // get all loads grouped by cartridge
             var query =
-                from load in factoryLoads
+                from load in data
                 group load by load.CartridgeName into gr
                 select gr;
 
             // add each item to the list using the Key
-            foreach (var item in query) {
+            foreach(var item in query) {
                 result.Add(item.Key);
             }
 
@@ -94,17 +101,17 @@ namespace LoadDataCLI.FactoryLoads {
         //
 
         // prompt the user to select a manufacturer, return a string
-        public string SelectManufacturer(string cartridgeName) {
+        public static string SelectManufacturer(List<FactoryLoad> data, string cartridgeName) {
 
             // variables to hold results
             string result;
             int userSelection = 0;
 
             // get list
-            List<string> manufacturerList = GetManufacturerList(cartridgeName);
+            List<string> manufacturerList = GetManufacturerList(data, cartridgeName);
 
             // display list
-            for (int i = 0; i < manufacturerList.Count; i++) {
+            for(int i = 0; i < manufacturerList.Count; i++) {
                 Console.WriteLine($"[{i + 1}]: {manufacturerList[i]}");
             }
 
@@ -115,32 +122,32 @@ namespace LoadDataCLI.FactoryLoads {
             try {
                 userSelection = int.Parse(Console.ReadLine());
             }
-            catch (Exception e) {
+            catch(Exception e) {
                 Console.WriteLine(e);
             }
 
             // match selection to list
-            result = manufacturerList[userSelection];
+            result = manufacturerList[userSelection - 1];
 
             // return selection
             return result;
         }
 
         // retrieve list of manufacturers
-        public List<string> GetManufacturerList(string cartridgeName) {
+        public static List<string> GetManufacturerList(List<FactoryLoad> data, string cartridgeName) {
 
             // list to hold results
             List<string> result = new List<string>();
 
             // get all loads, filter by cartridge, group by manufacturer
             var query =
-                from load in factoryLoads
+                from load in data
                 where load.CartridgeName == cartridgeName
                 group load by load.Manufacturer into gr
                 select gr;
 
             // add each item to the list using the key
-            foreach (var item in query) {
+            foreach(var item in query) {
                 result.Add(item.Key);
             }
 
@@ -154,17 +161,17 @@ namespace LoadDataCLI.FactoryLoads {
         //
 
         // prompt the user to select a bullet weight, return a double
-        public double SelectBulletWeight(string cartridgeName, string manufacturerName) {
+        public static double SelectBulletWeight(List<FactoryLoad> data, string cartridgeName, string manufacturerName) {
 
             // variables to hold results
             double result;
             int userSelection = 0;
 
             // get list
-            List<double> bulletWeightList = GetBulletWeightList(cartridgeName, manufacturerName);
+            List<double> bulletWeightList = GetBulletWeightList(data, cartridgeName, manufacturerName);
 
             // display list
-            for (int i = 0; i < bulletWeightList.Count; i++) {
+            for(int i = 0; i < bulletWeightList.Count; i++) {
                 Console.WriteLine($"[{i + 1}]: {bulletWeightList[i]} gr");
             }
 
@@ -175,7 +182,7 @@ namespace LoadDataCLI.FactoryLoads {
             try {
                 userSelection = int.Parse(Console.ReadLine());
             }
-            catch (Exception e) {
+            catch(Exception e) {
                 Console.WriteLine(e);
             }
 
@@ -187,25 +194,22 @@ namespace LoadDataCLI.FactoryLoads {
         }
 
         // retrieve list of bullet weights
-        public List<double> GetBulletWeightList(string cartridgeName, string manufacturerName) {
+        public static List<double> GetBulletWeightList(List<FactoryLoad> data, string cartridgeName, string manufacturerName) {
 
             // list to hold results
             List<double> result = new List<double>();
 
             // query
             var query =
-                from load in factoryLoads
+                from load in data
                 where load.CartridgeName == cartridgeName
                 where load.Manufacturer == manufacturerName
                 group load by load.BulletWeight into gr
                 select gr;
 
             // populate list
-            foreach (var item in query) {
-
-                // do not include null values
-                if (item.Key != null)
-                    result.Add((double)item.Key);
+            foreach(var item in query) {
+                result.Add((double)item.Key);
             }
 
             // return list
@@ -218,17 +222,17 @@ namespace LoadDataCLI.FactoryLoads {
         //
 
         // prompt the user to select a bullet name, return a string
-        public string SelectBulletName(string cartridgeName, string manufacturerName, double bulletWeight) {
+        public static string SelectBulletName(List<FactoryLoad> data, string cartridgeName, string manufacturerName, double bulletWeight) {
 
             // variables to hold results
             string result;
             int userSelection = 0;
 
             // get list
-            List<string> bulletNameList = GetBulletNameList(cartridgeName, manufacturerName, bulletWeight);
+            List<string> bulletNameList = GetBulletNameList(data, cartridgeName, manufacturerName, bulletWeight);
 
             // display list
-            for (int i = 0; i < bulletNameList.Count; i++) {
+            for(int i = 0; i < bulletNameList.Count; i++) {
                 Console.WriteLine($"[{i + 1}]: {bulletNameList[i]}");
             }
 
@@ -239,7 +243,7 @@ namespace LoadDataCLI.FactoryLoads {
             try {
                 userSelection = int.Parse(Console.ReadLine());
             }
-            catch (Exception e) {
+            catch(Exception e) {
                 Console.WriteLine(e);
             }
 
@@ -251,14 +255,14 @@ namespace LoadDataCLI.FactoryLoads {
         }
 
         // retrieve list of bullet names
-        public List<string> GetBulletNameList(string cartridgeName, string manufacturerName, double bulletWeight) {
+        public static List<string> GetBulletNameList(List<FactoryLoad> data, string cartridgeName, string manufacturerName, double bulletWeight) {
 
             // list to hold results
             List<string> result = new List<string>();
 
             // query
             var query =
-                from load in factoryLoads
+                from load in data
                 where load.CartridgeName == cartridgeName
                 where load.Manufacturer == manufacturerName
                 where load.BulletWeight == bulletWeight
@@ -266,7 +270,7 @@ namespace LoadDataCLI.FactoryLoads {
                 select gr;
 
             // populate list
-            foreach (var item in query) {
+            foreach(var item in query) {
                 result.Add(item.Key);
             }
 
@@ -275,6 +279,34 @@ namespace LoadDataCLI.FactoryLoads {
         }
 
 
+        //
+        // get individual load using filters
+        //
+        public static FactoryLoad GetFilteredLoad(List<FactoryLoad> data, string cartridgeName, string manufacturerName, double bulletWeight, string bulletName) {
+
+            // variable to store result
+            FactoryLoad? result = null;
+
+            // query list with filters
+            var query =
+                from load in data
+                where load.CartridgeName == cartridgeName
+                where load.Manufacturer == manufacturerName
+                where load.BulletWeight == bulletWeight
+                where load.BulletName == bulletName
+                select load;
+
+            // assign query result to variable
+            foreach( var item in query) {
+                result = item;
+            }
+
+            // return result if not null
+            if(result == null)
+                throw new Exception("null");
+            else
+                return result;
+        }
     }
 }
 

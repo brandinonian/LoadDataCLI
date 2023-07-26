@@ -11,11 +11,8 @@
     <None Remove="FactoryLoads\" />
     <None Remove="CustomLoads\" />
   </ItemGroup>
+
   <ItemGroup>
-    <Folder Include="FactoryLoads\" />
-    <Folder Include="CustomLoads\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\ReloadingClasses\ReloadingClasses\ReloadingClasses.csproj" />
+    <Folder Include="Utils\" />
   </ItemGroup>
 </Project>
