@@ -25,11 +25,11 @@
             data = FactoryLoadFilters.FilterByBulletString(data, bulletString);
 
             // store the selected load in a variable
-            FactoryLoad result = data[0];            
+            FactoryLoad result = data[0];
 
             // return the selected load
             return result;
-            
+
         }
 
         // prompt user to select a cartridge, return a string
@@ -44,7 +44,7 @@
 
             // display the numbered list of cartridges
             // check for null values and do not include
-            for(int i = 0; i < cartridgeList.Count; i++) {
+            for (int i = 0; i < cartridgeList.Count; i++) {
                 Console.WriteLine($"[{i + 1}]: {cartridgeList[i]}");
             }
 
@@ -55,7 +55,7 @@
             try {
                 userSelection = int.Parse(Console.ReadLine());
             }
-            catch(Exception e) {
+            catch (Exception e) {
                 Console.WriteLine(e);
             }
 
@@ -77,7 +77,7 @@
             List<string> manufacturerList = FactoryLoadQueries.GetManufacturerList(data);
 
             // display list
-            for(int i = 0; i < manufacturerList.Count; i++) {
+            for (int i = 0; i < manufacturerList.Count; i++) {
                 Console.WriteLine($"[{i + 1}]: {manufacturerList[i]}");
             }
 
@@ -88,7 +88,7 @@
             try {
                 userSelection = int.Parse(Console.ReadLine());
             }
-            catch(Exception e) {
+            catch (Exception e) {
                 Console.WriteLine(e);
             }
 
@@ -100,7 +100,7 @@
         }
 
         // prompt user to select a bullet, return a string
-         public static string SelectBulletString(List<FactoryLoad> data) {
+        public static string SelectBulletString(List<FactoryLoad> data) {
 
             // variables to hold results
             string result;
@@ -110,7 +110,7 @@
             List<string> bulletList = FactoryLoadQueries.GetBulletStringList(data);
 
             // display list
-            for(int i = 0; i < bulletList.Count; i++) {
+            for (int i = 0; i < bulletList.Count; i++) {
                 Console.WriteLine($"[{i + 1}]: {bulletList[i]}");
             }
 
@@ -121,7 +121,7 @@
             try {
                 userSelection = int.Parse(Console.ReadLine());
             }
-            catch(Exception e) {
+            catch (Exception e) {
                 Console.WriteLine(e);
             }
 
