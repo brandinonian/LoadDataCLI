@@ -9,13 +9,13 @@ namespace LoadDataCLI {
             FactoryLoad currentLoad;
 
             // hardcoded list for testing
-            List<FactoryLoad> data = new List<FactoryLoad>();
-
-            // add items to the list
-            data.Add(new FactoryLoad("6MM ARC", "Hornady", "ELD-M", 108.0));
-            data.Add(new FactoryLoad("5.56", "Lake City", "FMJ", 55.0));
-            data.Add(new FactoryLoad("5.56", "Lake City", "FMJ", 62.0));
-            data.Add(new FactoryLoad("9MM", "Federal", "FMJ", 115.0));
+            List<FactoryLoad> data = new List<FactoryLoad> {
+                // add items to the list
+                new FactoryLoad("6MM ARC", "Hornady", "ELD-M", 108.0),
+                new FactoryLoad("5.56", "Lake City", "FMJ", 55.0),
+                new FactoryLoad("5.56", "Lake City", "FMJ", 62.0),
+                new FactoryLoad("9MM", "Federal", "FMJ", 115.0)
+            };
 
             // add barrel names and velocities
             data[0].BarrelNames.Add("18\" Gas");
@@ -35,7 +35,7 @@ namespace LoadDataCLI {
                 WriteLine();
                 WriteLine(currentLoad.ToString());
             }
-            catch(Exception ex) {
+            catch (Exception ex) {
                 WriteLine(ex.Message);
             }
 
