@@ -39,9 +39,6 @@ namespace LoadDataCLI {
                 WriteLine(ex.Message);
             }
 
-
-            // TODO: Get an interface working with factory loads and a database
-            // then move on to custom loads
         }
     }
 }

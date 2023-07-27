@@ -37,13 +37,13 @@ namespace LoadDataCLI {
         //
         public override string ToString() {
             // add properties to string
-            string output = $"{Manufacturer}\t\t\t{CartridgeName}" +
+            string output = $"{Manufacturer}\t\t{CartridgeName}" +
                 $"\n{BulletString}" +
-                $"\n\nBarrel\t\t\tVelocity\n";
+                $"\n\nBarrel\t\tVelocity\n";
 
             // add each barrel and velocity to the string
             for(int i = 0; i < BarrelNames.Count; i++) {
-                output += $"{BarrelNames[i]}\t\t\t{Velocities[i]}\n";
+                output += $"{BarrelNames[i]}\t\t{Velocities[i]}\n";
             }
 
             // return output string
