@@ -37,7 +37,7 @@ namespace LoadDataCLI {
                 WriteLine();
                 WriteLine(currentLoad.ToString());
             }
-            catch(Exception ex) {
+            catch (Exception ex) {
                 WriteLine(ex.Message);
             }
 
