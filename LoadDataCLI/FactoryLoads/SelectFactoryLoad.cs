@@ -1,9 +1,16 @@
 ﻿namespace LoadDataCLI {
 
-    public class FactoryLoadSelector {
+    public class SelectFactoryLoad {
 
         // entry point
-        public static FactoryLoadModel Init(List<FactoryLoadModel> data) {
+        public static FactoryLoadModel Init() {
+            
+            // connect to mongodb
+            FactoryLoadService factoryLoadService = new FactoryLoadService();
+            Task<List<FactoryLoadModel>> getTask = factoryLoadService.GetAsync();
+            List<FactoryLoadModel> data = getTask.Result;
+            
+            // start console output
             Console.WriteLine("Factory Loads");
 
             // select the cartridge

@@ -8,38 +8,49 @@ namespace LoadDataCLI {
             // selector result goes here
             FactoryLoadModel currentLoad;
 
-            // hardcoded list for testing
-            FactoryLoadService factoryLoadService = new FactoryLoadService();
-            Task<List<FactoryLoadModel>> getTask = factoryLoadService.GetAsync();
-            List<FactoryLoadModel> data = getTask.Result;
+            // user input
+            int? userInputInt = null;
 
-            //// add items to the list
-            //data.Add(new FactoryLoadModel("6MM ARC", "Hornady", "ELD-M", 108.0));
-            //data.Add(new FactoryLoadModel("5.56", "Lake City", "FMJ", 55.0));
-            //data.Add(new FactoryLoadModel("5.56", "Lake City", "FMJ", 62.0));
-            //data.Add(new FactoryLoadModel("9MM", "Federal", "FMJ", 115.0));
+            // main options
+            do {
+                WriteLine("[1] View Data [2] New Load [3] Quit: ");
 
-            //// add barrel names and velocities
-            //data[0].BarrelNames.Add("18\" Gas");
-            //data[0].Velocities.Add(2450);
-            //data[1].BarrelNames.Add("18\"SS");
-            //data[1].Velocities.Add(2950);
-            //data[2].BarrelNames.Add("18\"SS");
-            //data[2].Velocities.Add(2850);
-            //data[3].BarrelNames.Add("Glock 45");
-            //data[3].Velocities.Add(1150);
+                try {
+                    userInputInt = int.Parse(ReadLine());
+                }
+                catch(Exception ex) {
+                    WriteLine(ex.Message);
+                }
 
-            // select load, returns FactoryLoad type
-            try {
-                currentLoad = FactoryLoadSelector.Init(data);
+                // 1 to view data
+                if(userInputInt == 1) {
+                    // select load, returns FactoryLoad type
+                    try {
+                        currentLoad = SelectFactoryLoad.Init();
 
-                // display selected load
-                WriteLine();
-                WriteLine(currentLoad.ToString());
-            }
-            catch (Exception ex) {
-                WriteLine(ex.Message);
-            }
+                        // display selected load
+                        WriteLine();
+                        WriteLine(currentLoad.ToString());
+                    }
+                    catch(Exception ex) {
+                        WriteLine(ex.Message);
+                    }
+
+                    // user option to edit load or go back
+
+                }
+                else if(userInputInt == 2) {
+                    // create a new load
+                    throw new NotImplementedException();
+                }
+                else {
+                    break;
+                }
+
+            } while(userInputInt != 3);
+
+            WriteLine("\nPress any key to exit...");
+            ReadKey();
 
         }
     }
