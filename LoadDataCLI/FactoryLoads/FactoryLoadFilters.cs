@@ -8,10 +8,10 @@ namespace LoadDataCLI {
     public class FactoryLoadFilters {
 
         // filter by cartridge
-        public static List<FactoryLoad> FilterByCartridge(List<FactoryLoad> data, string cartridgeName) {
+        public static List<FactoryLoadModel> FilterByCartridge(List<FactoryLoadModel> data, string cartridgeName) {
 
             // list to hold results
-            List<FactoryLoad> results = new List<FactoryLoad>();
+            List<FactoryLoadModel> results = new List<FactoryLoadModel>();
 
             // filter input list
             var query = 
@@ -28,10 +28,10 @@ namespace LoadDataCLI {
         }
 
         // filter by manufacturer
-        public static List<FactoryLoad> FilterByManufacturer(List<FactoryLoad> data, string manufacturer) {
+        public static List<FactoryLoadModel> FilterByManufacturer(List<FactoryLoadModel> data, string manufacturer) {
 
             // list to hold results
-            List<FactoryLoad> results = new List<FactoryLoad>();
+            List<FactoryLoadModel> results = new List<FactoryLoadModel>();
 
             // filter input list
             var query = 
@@ -48,10 +48,10 @@ namespace LoadDataCLI {
         }
 
         // filter by bullet string
-        public static List<FactoryLoad> FilterByBulletString(List<FactoryLoad> data, string bulletString) {
+        public static List<FactoryLoadModel> FilterByBulletString(List<FactoryLoadModel> data, string bulletString) {
 
             // list to hold results
-            List<FactoryLoad> results = new List<FactoryLoad>();
+            List<FactoryLoadModel> results = new List<FactoryLoadModel>();
 
             // filter input list
             var query = 

@@ -8,7 +8,7 @@ namespace LoadDataCLI {
     public class FactoryLoadQueries {
 
         // get list of cartirdges
-        public static List<string> GetCartridgeList(List<FactoryLoad> data) {
+        public static List<string> GetCartridgeList(List<FactoryLoadModel> data) {
 
             // list to hold results
             List<string> result = new List<string>();
@@ -30,7 +30,7 @@ namespace LoadDataCLI {
         }
 
          // retrieve list of manufacturers
-        public static List<string> GetManufacturerList(List<FactoryLoad> data) {
+        public static List<string> GetManufacturerList(List<FactoryLoadModel> data) {
 
             // list to hold results
             List<string> result = new List<string>();
@@ -51,7 +51,7 @@ namespace LoadDataCLI {
         }
 
         // retrieve list of bullet weights
-        public static List<string> GetBulletStringList(List<FactoryLoad> data) {
+        public static List<string> GetBulletStringList(List<FactoryLoadModel> data) {
 
             // list to hold results
             List<string> result = new List<string>();
@@ -72,7 +72,7 @@ namespace LoadDataCLI {
         }
         
         // retrieve list of bullet weights
-        public static List<double> GetBulletWeightList(List<FactoryLoad> data) {
+        public static List<double> GetBulletWeightList(List<FactoryLoadModel> data) {
 
             // list to hold results
             List<double> result = new List<double>();
@@ -93,7 +93,7 @@ namespace LoadDataCLI {
         }
         
         // retrieve list of bullet names
-        public static List<string> GetBulletNameList(List<FactoryLoad> data) {
+        public static List<string> GetBulletNameList(List<FactoryLoadModel> data) {
 
             // list to hold results
             List<string> result = new List<string>();

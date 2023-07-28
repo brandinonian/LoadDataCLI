@@ -3,7 +3,7 @@
     public class FactoryLoadSelector {
 
         // entry point
-        public static FactoryLoad Init(List<FactoryLoad> data) {
+        public static FactoryLoadModel Init(List<FactoryLoadModel> data) {
             Console.WriteLine("Factory Loads");
 
             // select the cartridge
@@ -25,7 +25,7 @@
             data = FactoryLoadFilters.FilterByBulletString(data, bulletString);
 
             // store the selected load in a variable
-            FactoryLoad result = data[0];
+            FactoryLoadModel result = data[0];
 
             // return the selected load
             return result;
@@ -33,7 +33,7 @@
         }
 
         // prompt user to select a cartridge, return a string
-        public static string SelectCartridge(List<FactoryLoad> data) {
+        public static string SelectCartridge(List<FactoryLoadModel> data) {
 
             // variables to hold results
             string result;
@@ -67,7 +67,7 @@
         }
 
         // prompt user to select a manufacturer, return a string
-        public static string SelectManufacturer(List<FactoryLoad> data) {
+        public static string SelectManufacturer(List<FactoryLoadModel> data) {
 
             // variables to hold results
             string result;
@@ -100,7 +100,7 @@
         }
 
         // prompt user to select a bullet, return a string
-        public static string SelectBulletString(List<FactoryLoad> data) {
+        public static string SelectBulletString(List<FactoryLoadModel> data) {
 
             // variables to hold results
             string result;

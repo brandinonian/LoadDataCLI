@@ -1,11 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
 
 namespace LoadDataCLI {
-    public class FactoryLoad {
+    public class FactoryLoadModel {
+        //
+        // mongodb id
+        //
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; }
         //
         // load info
         //
@@ -26,7 +29,7 @@ namespace LoadDataCLI {
         //
         // constructor
         //
-        public FactoryLoad(string CartridgeName, string Manufacturer, string BulletName, double BulletWeight) {
+        public FactoryLoadModel(string CartridgeName, string Manufacturer, string BulletName, double BulletWeight) {
             this.CartridgeName = CartridgeName;
             this.Manufacturer = Manufacturer;
             this.BulletName = BulletName;
