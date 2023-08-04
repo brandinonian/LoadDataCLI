@@ -3,7 +3,7 @@
     public class SelectFactoryLoad {
 
         // entry point
-        public static FactoryLoadModel Init(List<FactoryLoadModel> data) {
+        public static FactoryLoadModel Select(List<FactoryLoadModel> data) {
             
             // start console output
             Console.WriteLine("Factory Loads");

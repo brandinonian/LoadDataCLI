@@ -11,50 +11,31 @@ namespace LoadDataCLI {
             // connect to mongoDb
             FactoryLoadService factoryLoadService = new FactoryLoadService();
 
+            // get list of factory loads
+            Task<List<FactoryLoadModel>> getTask = factoryLoadService.GetAsync();
+            List<FactoryLoadModel> factoryLoadList = getTask.Result;
+
             // user input
-            int? userInputInt = null;
+            string? userOptionSelection = null;
 
             // main options
             do {
-                WriteLine("[1] View Data [2] New Load [3] Quit: ");
+                WriteLine("1 view || 2 new || 3 quit : ");
 
-                try {
-                    userInputInt = int.Parse(ReadLine());
-                }
-                catch(Exception ex) {
-                    WriteLine(ex.Message);
-                }
+                userOptionSelection = ReadLine();
 
                 // 1 to view data
-                if(userInputInt == 1) {
-                    // select load, returns FactoryLoad type
-                    try {
-                        // get list of factory loads
-                        Task<List<FactoryLoadModel>> getTask = factoryLoadService.GetAsync();
-                        List<FactoryLoadModel> factoryLoadList = getTask.Result;
-
-                        currentLoad = SelectFactoryLoad.Init(factoryLoadList);
-
-                        // display selected load
-                        WriteLine();
-                        WriteLine(currentLoad.ToString());
-                    }
-                    catch(Exception ex) {
-                        WriteLine(ex.Message);
-                    }
-
-                    // user option to edit load or go back
-
+                if(userOptionSelection[..1] == "1" || userOptionSelection == "view") {
+                    ViewFactoryLoad.Init(factoryLoadList);
                 }
-                else if(userInputInt == 2) {
-                    // create a new load
-                    throw new NotImplementedException();
+                else if(userOptionSelection[..1] == "2" || userOptionSelection == "new") {
+                    CreateFactoryLoad.Create();
                 }
                 else {
                     break;
                 }
 
-            } while(userInputInt != 3);
+            } while(userOptionSelection != "3" && userOptionSelection != "quit");
 
             WriteLine("\nPress any key to exit...");
             ReadKey();

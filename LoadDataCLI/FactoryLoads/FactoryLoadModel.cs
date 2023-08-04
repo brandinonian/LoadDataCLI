@@ -8,7 +8,7 @@ namespace LoadDataCLI {
         //
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
+        public string? Id { get; set; }
         //
         // load info
         //
@@ -19,6 +19,11 @@ namespace LoadDataCLI {
         public string BulletString {
             get {
                 return $"{BulletWeight} gr {BulletName}";
+            }
+        }
+        public string VelocityTable {
+            get {
+                return GetVelocityTableString();
             }
         }
         //
@@ -39,11 +44,22 @@ namespace LoadDataCLI {
         // ToString()
         //
         public override string ToString() {
+
             // add properties to string
             string output = $"{Manufacturer}\t\t{CartridgeName}" +
-                $"\n{BulletString}" +
-                $"\n\nBarrel\t\tVelocity\n";
+                $"\n{BulletString}";
 
+            // return output string
+            return output;
+        }
+        //
+        // Velocity Table to string
+        //
+        public string GetVelocityTableString() {
+
+            // table header
+            string output = $"\n\nBarrel\t\tVelocity\n";
+            
             // add each barrel and velocity to the string
             for(int i = 0; i < BarrelNames.Count; i++) {
                 output += $"{BarrelNames[i]}\t\t{Velocities[i]}\n";
