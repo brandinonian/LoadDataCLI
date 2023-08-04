@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 namespace LoadDataCLI.FactoryLoads {
     public class CreateFactoryLoad {
 
-        public static FactoryLoadModel Init() {
-
-            // connect to mongodb
-            FactoryLoadService factoryLoadService = new FactoryLoadService();
+        public static FactoryLoadModel? Init() {
 
             // user input
             int? userInputInt = null;
+
+            // store the created load to be returned
+            FactoryLoadModel newLoad;
 
             // user input for load parameters
             do {
@@ -35,19 +35,26 @@ namespace LoadDataCLI.FactoryLoads {
 
                 while (!repeat) {
                     Console.Write("Enter the bullet weight: ");
-                    
+
                     // catch exceptions
                     try {
                         bulletWeight = double.Parse(Console.ReadLine());
                         repeat = false;
-                    } catch(Exception ex) { 
+
+                        // populate the new load with data
+                        newLoad = new FactoryLoadModel(cartridgeName, manufacturer, bulletName, bulletWeight);
+
+                        // return the completed load
+                        return newLoad;
+                    }
+                    catch (Exception ex) {
                         Console.WriteLine(ex.Message);
                     }
                 }
-                
-                
+            } while (userInputInt != 3);
 
-            } while(userInputInt != 3);
+            // return the new load
+            return null;
         }
     }
 }

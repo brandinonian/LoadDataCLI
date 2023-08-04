@@ -3,12 +3,7 @@
     public class SelectFactoryLoad {
 
         // entry point
-        public static FactoryLoadModel Init() {
-            
-            // connect to mongodb
-            FactoryLoadService factoryLoadService = new FactoryLoadService();
-            Task<List<FactoryLoadModel>> getTask = factoryLoadService.GetAsync();
-            List<FactoryLoadModel> data = getTask.Result;
+        public static FactoryLoadModel Init(List<FactoryLoadModel> data) {
             
             // start console output
             Console.WriteLine("Factory Loads");

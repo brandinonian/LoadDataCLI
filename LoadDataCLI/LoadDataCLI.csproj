@@ -10,10 +10,12 @@
   <ItemGroup>
     <None Remove="FactoryLoads\" />
     <None Remove="CustomLoads\" />
+    <None Remove="CLI\" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Utils\" />
+    <Folder Include="CLI\" />
   </ItemGroup>
 
   <ItemGroup>

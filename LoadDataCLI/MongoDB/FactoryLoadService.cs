@@ -12,8 +12,7 @@ namespace LoadDataCLI {
 
         private readonly IMongoCollection<FactoryLoadModel> _factoryLoadsCollection;
 
-        public FactoryLoadService()
-        {
+        public FactoryLoadService() {
             MongoClient mongoClient = new MongoClient("mongodb://localhost:27017");
 
             IMongoDatabase mongoDatabase = mongoClient.GetDatabase("ReloadingData");
@@ -23,7 +22,6 @@ namespace LoadDataCLI {
 
         public async Task<List<FactoryLoadModel>> GetAsync() =>
             await _factoryLoadsCollection.Find(_ => true).ToListAsync();
-
 
         public async Task<FactoryLoadModel?> GetAsync(string id) =>
             await _factoryLoadsCollection.Find(x => x.Id == id).FirstOrDefaultAsync();

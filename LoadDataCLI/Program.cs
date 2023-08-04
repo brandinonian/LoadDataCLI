@@ -8,6 +8,9 @@ namespace LoadDataCLI {
             // selector result goes here
             FactoryLoadModel currentLoad;
 
+            // connect to mongoDb
+            FactoryLoadService factoryLoadService = new FactoryLoadService();
+
             // user input
             int? userInputInt = null;
 
@@ -26,7 +29,11 @@ namespace LoadDataCLI {
                 if(userInputInt == 1) {
                     // select load, returns FactoryLoad type
                     try {
-                        currentLoad = SelectFactoryLoad.Init();
+                        // get list of factory loads
+                        Task<List<FactoryLoadModel>> getTask = factoryLoadService.GetAsync();
+                        List<FactoryLoadModel> factoryLoadList = getTask.Result;
+
+                        currentLoad = SelectFactoryLoad.Init(factoryLoadList);
 
                         // display selected load
                         WriteLine();
