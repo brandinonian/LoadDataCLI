@@ -11,7 +11,7 @@ namespace LoadDataCLI {
         public static List<FactoryLoadModel> FilterByCartridge(List<FactoryLoadModel> data, string cartridgeName) {
 
             // list to hold results
-            List<FactoryLoadModel> results = new List<FactoryLoadModel>();
+            List<FactoryLoadModel> results = new();
 
             // filter input list
             var query = 
@@ -31,12 +31,12 @@ namespace LoadDataCLI {
         public static List<FactoryLoadModel> FilterByManufacturer(List<FactoryLoadModel> data, string manufacturer) {
 
             // list to hold results
-            List<FactoryLoadModel> results = new List<FactoryLoadModel>();
+            List<FactoryLoadModel> results = new();
 
             // filter input list
             var query = 
                 from load in data
-                where load.Manufacturer == manufacturer
+                where load.ManufacturerName == manufacturer
                 select load;
 
             // add results to list
@@ -51,7 +51,7 @@ namespace LoadDataCLI {
         public static List<FactoryLoadModel> FilterByBulletString(List<FactoryLoadModel> data, string bulletString) {
 
             // list to hold results
-            List<FactoryLoadModel> results = new List<FactoryLoadModel>();
+            List<FactoryLoadModel> results = new();
 
             // filter input list
             var query = 

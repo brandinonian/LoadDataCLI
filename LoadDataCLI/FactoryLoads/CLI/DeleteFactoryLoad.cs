@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LoadDataCLI.CLI {
-    public class DeleteLoad {
+namespace LoadDataCLI {
+    public class DeleteFactoryLoad {
 
         // ask the user if they are sure they want to delete before proceeding
-        public static FactoryLoadModel? Delete(FactoryLoadModel data) {
+        public static int Delete(FactoryLoadModel data) {
             bool repeat = true;
             string? userOptionSelection = null;
 
@@ -22,13 +22,17 @@ namespace LoadDataCLI.CLI {
                 // on yes/y return data for deletion
                 if(userOptionSelection == "y") {
                     repeat = false;
-                    return data;
+
+                    // return the 1 to delete
+                    return 1;
                 }
 
                 // on no/n return null to cancel
                 else if(userOptionSelection == "n") {
                     repeat = false;
-                    return null;
+
+                    // return 0 to cancel
+                    return 0;
                 }
 
                 // catch all other input by repeating
@@ -37,8 +41,8 @@ namespace LoadDataCLI.CLI {
                 }
             } while(repeat);
 
-            // return null as default
-            return null;
+            // return 0 as default
+            return 0;
         }
     }
 }

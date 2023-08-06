@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace LoadDataCLI {
     public class ViewFactoryLoad {
-        // entry point
-        public static void Init(List<FactoryLoadModel> data) {
+        // entry point, returns a load model or null and exit code
+        public static (FactoryLoadModel?, int) View(List<FactoryLoadModel> data) {
 
             // current load variable
             FactoryLoadModel currentLoad;
@@ -24,7 +24,7 @@ namespace LoadDataCLI {
             if(currentLoad != null) {
                 Console.WriteLine();
                 Console.WriteLine(currentLoad);
-                Console.WriteLine(currentLoad.VelocityTable);
+                Console.WriteLine(currentLoad.VelocityTableString);
             }
 
             // option to update, delete, or go back
@@ -38,16 +38,13 @@ namespace LoadDataCLI {
                 switch(userOptionSelection) {
                     case "edit":
                     case "e":
-                        userOptionSelection = "e";
-                        break;
+                        return (currentLoad, 1);
                     case "delete":
                     case "d":
-                        userOptionSelection = "d";
-                        break;
+                        return (currentLoad, 2);
                     case "back":
                     case "b":
-                        userOptionSelection = "b";
-                        break;
+                        return (null, 3);
                     default:
                         userOptionSelection = null;
                         break;
@@ -55,18 +52,7 @@ namespace LoadDataCLI {
 
             } while(userOptionSelection == null);
 
-            // user selection switch
-            switch(userOptionSelection) {
-                case "e":
-                    currentLoad = EditFactoryLoad.Edit(currentLoad);
-                    // TODO implement an update function, this only updates the current load variable
-                    break;
-                case "d":
-                    // TODO implement a deletion function
-                    break;
-                default:
-                    break;
-            }
+            return (null, 4);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace LoadDataCLI {
         // load info
         //
         public string CartridgeName { get; set; }
-        public string Manufacturer { get; set; }
+        public string ManufacturerName { get; set; }
         public string BulletName { get; set; }
         public double BulletWeight { get; set; }
         public string BulletString {
@@ -21,7 +21,7 @@ namespace LoadDataCLI {
                 return $"{BulletWeight} gr {BulletName}";
             }
         }
-        public string VelocityTable {
+        public string VelocityTableString {
             get {
                 return GetVelocityTableString();
             }
@@ -36,7 +36,7 @@ namespace LoadDataCLI {
         //
         public FactoryLoadModel(string CartridgeName, string Manufacturer, string BulletName, double BulletWeight) {
             this.CartridgeName = CartridgeName;
-            this.Manufacturer = Manufacturer;
+            this.ManufacturerName = Manufacturer;
             this.BulletName = BulletName;
             this.BulletWeight = BulletWeight;
         }
@@ -46,7 +46,7 @@ namespace LoadDataCLI {
         public override string ToString() {
 
             // add properties to string
-            string output = $"{Manufacturer}\t\t{CartridgeName}" +
+            string output = $"{ManufacturerName}\t\t{CartridgeName}" +
                 $"\n{BulletString}";
 
             // return output string

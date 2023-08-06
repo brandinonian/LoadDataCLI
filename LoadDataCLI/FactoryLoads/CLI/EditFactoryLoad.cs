@@ -11,10 +11,11 @@ namespace LoadDataCLI {
             //
             // display each field and allow for edits
             //
+
             //
             // edit cartridge selection
             //
-            string? cartridgeInputString = null;
+            string cartridgeInputString;
 
             // display current value for reference
             Console.WriteLine($"Cartridge: {data.CartridgeName}");
@@ -26,17 +27,17 @@ namespace LoadDataCLI {
             cartridgeInputString = Console.ReadLine();
 
             // check for null input, update data if not
-            if(cartridgeInputString != null) {
+            if (cartridgeInputString != string.Empty) {
                 data.CartridgeName = cartridgeInputString;
             }
 
             //
             // edit manufacturer
             //
-            string? manufacturerInputString = null;
+            string manufacturerInputString;
 
             // display current value for reference
-            Console.WriteLine($"Manufacturer: {data.Manufacturer}");
+            Console.WriteLine($"Manufacturer: {data.ManufacturerName}");
 
             // passing a null value (press enter) skips updating this field
             Console.Write("(Enter to skip) New value : ");
@@ -45,8 +46,8 @@ namespace LoadDataCLI {
             manufacturerInputString = Console.ReadLine();
 
             // check for null input, update data if not
-            if(manufacturerInputString != null) {
-                data.Manufacturer = manufacturerInputString;
+            if (manufacturerInputString != string.Empty) {
+                data.ManufacturerName = manufacturerInputString;
             }
 
             //
@@ -64,7 +65,7 @@ namespace LoadDataCLI {
             bulletNameInputString = Console.ReadLine();
 
             // check for null input, update data if not
-            if(bulletNameInputString != null) {
+            if(bulletNameInputString != string.Empty && bulletNameInputString != null) {
                 data.BulletName = bulletNameInputString;
             }
 
