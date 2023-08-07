@@ -31,11 +31,14 @@
                     // store the current load info
                     FactoryLoadModel? currentLoad;
 
+                    // get the list of loads from mongodb
+                    List<FactoryLoadModel> loadList = factoryLoadService.GetAsync().Result;
+
                     // store the view exit code
                     int viewFactoryLoadExitCode = 0;
 
                     // run factory load viewer
-                    (currentLoad, viewFactoryLoadExitCode) = ViewFactoryLoad.View(factoryLoadService.GetAsync().Result);
+                    (currentLoad, viewFactoryLoadExitCode) = ViewFactoryLoad.View(loadList);
 
                     // switch to handle view exit code (1 = edit, 2 = delete, 3 = back)
                     switch (viewFactoryLoadExitCode) {

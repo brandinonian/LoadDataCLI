@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace LoadDataCLI {
-    public class FactoryLoadQueries {
+    public class FactoryLoadModelQueries {
 
         // get list of cartirdges
         public static List<string> GetCartridgeList(List<FactoryLoadModel> data) {
@@ -50,7 +50,7 @@ namespace LoadDataCLI {
             return result;
         }
 
-        // retrieve list of bullet weights
+        // retrieve list of bullet strings
         public static List<string> GetBulletStringList(List<FactoryLoadModel> data) {
 
             // list to hold results

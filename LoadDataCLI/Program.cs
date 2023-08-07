@@ -3,17 +3,28 @@
         private static void Main(string[] args) {
             Console.WriteLine("Load Data");
 
-            // select factory or custom load
-            Console.Write("Factory || Custom : ");
+            // store first argument as option selection
+            string? optionSeleciton = null;
 
-            // capture user input
-            string userSelectionInput = Console.ReadLine().Trim().ToLower();
+            if (args.Length > 0) {
+                optionSeleciton = args[0];
+            }
 
-            // allow "f" for factory
-            if (userSelectionInput == "f" || userSelectionInput == "factory") {
-                FactoryLoadMain.Init();
+            // if no arguments are passed display user options
+            if(optionSeleciton == null) {
+
+                // select factory or custom load
+                Console.Write("Factory || Custom : ");
+
+                // capture user input
+                optionSeleciton = Console.ReadLine().Trim().ToLower();
+
             }
             
+                // allow "f" for factory
+                if(optionSeleciton == "f" || optionSeleciton == "factory") {
+                    FactoryLoadMain.Init();
+                }
 
             Console.WriteLine("\nPress any key to exit...");
             Console.ReadKey();

@@ -42,7 +42,7 @@
             int userSelection = 0;
 
             // get the list of cartridges
-            List<string> cartridgeList = FactoryLoadQueries.GetCartridgeList(data);
+            List<string> cartridgeList = FactoryLoadModelQueries.GetCartridgeList(data);
 
             // display the numbered list of cartridges
             // check for null values and do not include
@@ -76,7 +76,7 @@
             int userSelection = 0;
 
             // get list
-            List<string> manufacturerList = FactoryLoadQueries.GetManufacturerList(data);
+            List<string> manufacturerList = FactoryLoadModelQueries.GetManufacturerList(data);
 
             // display list
             for (int i = 0; i < manufacturerList.Count; i++) {
@@ -109,7 +109,7 @@
             int userSelection = 0;
 
             // get list
-            List<string> bulletList = FactoryLoadQueries.GetBulletStringList(data);
+            List<string> bulletList = FactoryLoadModelQueries.GetBulletStringList(data);
 
             // display list
             for (int i = 0; i < bulletList.Count; i++) {
