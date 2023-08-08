@@ -4,7 +4,7 @@
 
         // entry point
         public static FactoryLoadModel Select(List<FactoryLoadModel> data) {
-            
+
             // start console output
             Console.WriteLine("Factory Loads");
 

@@ -14,13 +14,13 @@ namespace LoadDataCLI {
             List<FactoryLoadModel> results = new();
 
             // filter input list
-            var query = 
+            var query =
                 from load in data
                 where load.CartridgeName == cartridgeName
                 select load;
 
             // add results to list
-            foreach(var item in query)
+            foreach (var item in query)
                 results.Add(item);
 
             // return list
@@ -34,13 +34,13 @@ namespace LoadDataCLI {
             List<FactoryLoadModel> results = new();
 
             // filter input list
-            var query = 
+            var query =
                 from load in data
                 where load.ManufacturerName == manufacturer
                 select load;
 
             // add results to list
-            foreach(var item in query)
+            foreach (var item in query)
                 results.Add(item);
 
             // return list
@@ -54,13 +54,13 @@ namespace LoadDataCLI {
             List<FactoryLoadModel> results = new();
 
             // filter input list
-            var query = 
+            var query =
                 from load in data
                 where load.BulletString == bulletString
                 select load;
 
             // add results to list
-            foreach(var item in query)
+            foreach (var item in query)
                 results.Add(item);
 
             // return list

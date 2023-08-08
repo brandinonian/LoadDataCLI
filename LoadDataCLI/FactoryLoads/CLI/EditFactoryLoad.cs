@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LoadDataCLI {
+﻿namespace LoadDataCLI {
     public class EditFactoryLoad {
 
         public static FactoryLoadModel? Edit(FactoryLoadModel data) {
@@ -65,7 +59,7 @@ namespace LoadDataCLI {
             bulletNameInputString = Console.ReadLine();
 
             // check for null input, update data if not
-            if(bulletNameInputString != string.Empty && bulletNameInputString != null) {
+            if (bulletNameInputString != string.Empty && bulletNameInputString != null) {
                 data.BulletName = bulletNameInputString;
             }
 
@@ -77,7 +71,7 @@ namespace LoadDataCLI {
             // try storing user input, loop on exceptions
             bool repeat = true;
 
-            while(repeat) {
+            while (repeat) {
                 // display current value for reference
                 Console.WriteLine($"Bullet Weight: {data.BulletWeight}");
 
@@ -88,7 +82,7 @@ namespace LoadDataCLI {
                     bulletWeightInputDouble = double.Parse(Console.ReadLine());
                     repeat = false;
                 }
-                catch(Exception ex) {
+                catch (Exception ex) {
                     repeat = true;
                     Console.WriteLine(ex.Message);
                 }
@@ -96,7 +90,7 @@ namespace LoadDataCLI {
             }
 
             // check for null input, update data if not
-            if(bulletWeightInputDouble != null) {
+            if (bulletWeightInputDouble != null) {
                 data.BulletWeight = (double)bulletWeightInputDouble;
             }
 

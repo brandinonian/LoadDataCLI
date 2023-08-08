@@ -20,7 +20,7 @@ namespace LoadDataCLI {
                 select gr;
 
             // add each item to the list using the Key
-            foreach(var item in query) {
+            foreach (var item in query) {
                 result.Add(item.Key);
             }
 
@@ -29,7 +29,7 @@ namespace LoadDataCLI {
 
         }
 
-         // retrieve list of manufacturers
+        // retrieve list of manufacturers
         public static List<string> GetManufacturerList(List<FactoryLoadModel> data) {
 
             // list to hold results
@@ -42,7 +42,7 @@ namespace LoadDataCLI {
                 select gr;
 
             // add each item to the list using the key
-            foreach(var item in query) {
+            foreach (var item in query) {
                 result.Add(item.Key);
             }
 
@@ -63,14 +63,14 @@ namespace LoadDataCLI {
                 select gr;
 
             // populate list
-            foreach(var item in query) {
+            foreach (var item in query) {
                 result.Add(item.Key);
             }
 
             // return list
             return result;
         }
-        
+
         // retrieve list of bullet weights
         public static List<double> GetBulletWeightList(List<FactoryLoadModel> data) {
 
@@ -84,14 +84,14 @@ namespace LoadDataCLI {
                 select gr;
 
             // populate list
-            foreach(var item in query) {
+            foreach (var item in query) {
                 result.Add((double)item.Key);
             }
 
             // return list
             return result;
         }
-        
+
         // retrieve list of bullet names
         public static List<string> GetBulletNameList(List<FactoryLoadModel> data) {
 
@@ -105,7 +105,7 @@ namespace LoadDataCLI {
                 select gr;
 
             // populate list
-            foreach(var item in query) {
+            foreach (var item in query) {
                 result.Add(item.Key);
             }
 

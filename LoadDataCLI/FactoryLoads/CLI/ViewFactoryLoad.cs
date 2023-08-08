@@ -21,21 +21,20 @@ namespace LoadDataCLI {
             }
 
             // display the load information
-            if(currentLoad != null) {
+            if (currentLoad != null) {
                 Console.WriteLine();
                 Console.WriteLine(currentLoad);
                 Console.WriteLine(currentLoad.VelocityTableString);
             }
 
             // option to update, delete, or go back
-            string? userOptionSelection = null;
-
+            string? userOptionSelection;
             do {
                 Console.Write("edit || delete || back : ");
                 userOptionSelection = Console.ReadLine().Trim().ToLower();
 
                 // user options
-                switch(userOptionSelection) {
+                switch (userOptionSelection) {
                     case "edit":
                     case "e":
                         return (currentLoad, 1);
@@ -50,7 +49,7 @@ namespace LoadDataCLI {
                         break;
                 }
 
-            } while(userOptionSelection == null);
+            } while (userOptionSelection == null);
 
             return (null, 4);
         }
