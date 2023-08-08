@@ -14,27 +14,29 @@
             do {
                 Console.WriteLine("Enter the cartridge: ");
                 cartridgeName = Console.ReadLine();
-            } while (cartridgeName != null);
+            } while (cartridgeName == string.Empty);
 
             // input manufacturer, repeat if null
             string? manufacturer;
             do {
                 Console.WriteLine("Enter the manufacturer: ");
                 manufacturer = Console.ReadLine();
-            } while (manufacturer != null);
+            } while (manufacturer == string.Empty);
 
             // input bullet name, repeat if null
             string? bulletName;
             do {
                 Console.WriteLine("Enter the bullet name: ");
                 bulletName = Console.ReadLine();
-            } while (bulletName != null);
+            } while (bulletName == string.Empty);
 
             // input bullet weight (double), repeat on exceptions
             double bulletWeight;
+
+            // in case input can't be parsed
             bool repeat = true;
 
-            while (!repeat) {
+            while (repeat) {
                 Console.Write("Enter the bullet weight: ");
 
                 // catch exceptions
@@ -49,7 +51,11 @@
                     return newLoad;
                 }
                 catch (Exception ex) {
-                    repeat = false;
+
+                    // repeat on exceptions
+                    repeat = true;
+
+                    // print to console
                     Console.WriteLine(ex.Message);
                 }
             }

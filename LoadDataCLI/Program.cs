@@ -4,6 +4,10 @@
             Console.WriteLine("Load Data");
 
             // check arguments for factory loads
+
+            /*
+             * TODO
+             * 
             if (args.Contains("-factory") || args.Contains("-f")) {
 
             }
@@ -12,6 +16,7 @@
             else if (args.Contains("-custom") || args.Contains("-c")) {
 
             }
+            */
 
             // else if args contains view
 
