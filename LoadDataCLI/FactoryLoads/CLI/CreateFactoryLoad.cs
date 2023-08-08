@@ -10,25 +10,25 @@
             // user input for load parameters
             //
             // input cartridge, repeat if null
-            string? cartridgeName = null;
-
-            do {
+            string? cartridgeName;
+            do
+            {
                 Console.WriteLine("Enter the cartridge: ");
                 cartridgeName = Console.ReadLine();
             } while(cartridgeName != null);
 
             // input manufacturer, repeat if null
-            string? manufacturer = null;
-
-            do {
+            string? manufacturer;
+            do
+            {
                 Console.WriteLine("Enter the manufacturer: ");
                 manufacturer = Console.ReadLine();
             } while(manufacturer != null);
 
             // input bullet name, repeat if null
-            string? bulletName = null;
-
-            do {
+            string? bulletName;
+            do
+            {
                 Console.WriteLine("Enter the bullet name: ");
                 bulletName = Console.ReadLine();
             } while(bulletName != null);
