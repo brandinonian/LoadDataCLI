@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LoadDataCLI {
+﻿namespace LoadDataCLI {
     public class ViewFactoryLoad {
         // entry point, returns a load model or null and exit code
         public static (FactoryLoadModel?, int) View(List<FactoryLoadModel> data) {

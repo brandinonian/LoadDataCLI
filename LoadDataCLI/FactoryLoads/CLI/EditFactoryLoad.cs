@@ -44,19 +44,17 @@
                 data.ManufacturerName = manufacturerInputString;
             }
 
-            //
-            // edit bullet name
-            //
-            string? bulletNameInputString = null;
-
             // display current value for reference
             Console.WriteLine($"Bullet Name: {data.BulletName}");
 
             // passing a null value (press enter) skips updating this field
             Console.Write("(Enter to skip) New Value : ");
 
+            //
+            // edit bullet name
+            //
             // store user input
-            bulletNameInputString = Console.ReadLine();
+            string? bulletNameInputString = Console.ReadLine();
 
             // check for null input, update data if not
             if (bulletNameInputString != string.Empty && bulletNameInputString != null) {
