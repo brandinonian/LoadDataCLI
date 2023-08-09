@@ -6,12 +6,7 @@
 
             // connect to database
             // mongo connection
-            FactoryLoadService factoryLoadService = new FactoryLoadService();
-
-            // option to view existing or create new load
-            //
-            // to store user input
-            string? userOptionSelection = null;
+            FactoryLoadService factoryLoadService = new();
 
             // to repeat the input loop
             bool repeat = true;
@@ -20,8 +15,11 @@
             do {
                 Console.Write("view || new || quit : ");
 
+                // option to view existing or create new load
+                //
+                // to store user input
                 // store user input
-                userOptionSelection = Console.ReadLine().Trim().ToLower();
+                string? userOptionSelection = Console.ReadLine().Trim().ToLower();
 
                 //
                 // "v" or "view" view data
@@ -35,13 +33,13 @@
                     List<FactoryLoadModel> loadList = factoryLoadService.GetAsync().Result;
 
                     // store the view exit code
-                    int viewFactoryLoadExitCode = 0;
+                    int viewOptionSelection;
 
                     // run factory load viewer
-                    (currentLoad, viewFactoryLoadExitCode) = ViewFactoryLoad.View(loadList);
+                    (currentLoad, viewOptionSelection) = ViewFactoryLoad.View(factoryLoadService.GetAsync().Result);
 
                     // switch to handle view exit code (1 = edit, 2 = delete, 3 = back)
-                    switch (viewFactoryLoadExitCode) {
+                    switch (viewOptionSelection) {
 
                         //
                         // edit selected load
@@ -67,7 +65,7 @@
                             string? deleteID = currentLoad.Id;
 
                             // delete the selected load
-                            int deleteAnswer = DeleteFactoryLoad.Delete(currentLoad);
+                            int deleteAnswer = DeleteFactoryLoad.ConfirmDelete();
 
                             // if delete function did not return null proceed with deleting the load
                             if (deleteAnswer == 1) {
@@ -83,12 +81,8 @@
                         //
                         // go back
                         //
-                        case 3:
-                            break;
-
-
                         default:
-                            throw new NotImplementedException();
+                            break;
                     }
                 }
 

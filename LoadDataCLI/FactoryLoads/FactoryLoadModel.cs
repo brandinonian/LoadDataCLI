@@ -8,14 +8,24 @@ namespace LoadDataCLI {
         //
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string? Id { get; set; }
+        public string? Id {
+            get; set;
+        }
         //
         // load info
         //
-        public string CartridgeName { get; set; }
-        public string ManufacturerName { get; set; }
-        public string BulletName { get; set; }
-        public double BulletWeight { get; set; }
+        public string CartridgeName {
+            get; set;
+        }
+        public string ManufacturerName {
+            get; set;
+        }
+        public string BulletName {
+            get; set;
+        }
+        public double BulletWeight {
+            get; set;
+        }
         public string BulletString {
             get {
                 return $"{BulletWeight} gr {BulletName}";
@@ -34,9 +44,9 @@ namespace LoadDataCLI {
         //
         // constructor
         //
-        public FactoryLoadModel(string CartridgeName, string Manufacturer, string BulletName, double BulletWeight) {
+        public FactoryLoadModel(string CartridgeName, string ManufacturerName, string BulletName, double BulletWeight) {
             this.CartridgeName = CartridgeName;
-            this.ManufacturerName = Manufacturer;
+            this.ManufacturerName = ManufacturerName;
             this.BulletName = BulletName;
             this.BulletWeight = BulletWeight;
         }
@@ -59,10 +69,10 @@ namespace LoadDataCLI {
 
             // table header
             string output = $"\n\nBarrel\t\tVelocity\n";
-            
+
             // add each barrel and velocity to the string
-            for(int i = 0; i < BarrelNames.Count; i++) {
-                output += $"{BarrelNames[i]}\t\t{Velocities[i]}\n";
+            for (int i = 0; i < BarrelNames.Count; i++) {
+                output += $"{BarrelNames[i]}\t{Velocities[i]}\n";
             }
 
             // return output string

@@ -3,28 +3,38 @@
         private static void Main(string[] args) {
             Console.WriteLine("Load Data");
 
-            // store first argument as option selection
-            string? optionSeleciton = null;
+            // check arguments for factory loads
 
-            if (args.Length > 0) {
-                optionSeleciton = args[0];
+            /*
+             * TODO
+             * 
+            if (args.Contains("-factory") || args.Contains("-f")) {
+
             }
 
-            // if no arguments are passed display user options
-            if(optionSeleciton == null) {
+            // check arguments for custom loads
+            else if (args.Contains("-custom") || args.Contains("-c")) {
 
-                // select factory or custom load
-                Console.Write("Factory || Custom : ");
+            }
+            */
 
-                // capture user input
-                optionSeleciton = Console.ReadLine().Trim().ToLower();
+            // else if args contains view
 
+            // else if args contains new
+
+            // TODO: pass these into the functions, or refactor to handle them here 
+
+            // select factory or custom load
+            Console.Write("Factory || Custom : ");
+
+            // capture user input
+            string userSelectionInput = Console.ReadLine().Trim().ToLower();
+
+            // allow "f" for factory
+            if (userSelectionInput == "f" || userSelectionInput == "factory") {
+                FactoryLoadMain.Init();
             }
             
-                // allow "f" for factory
-                if(optionSeleciton == "f" || optionSeleciton == "factory") {
-                    FactoryLoadMain.Init();
-                }
 
             Console.WriteLine("\nPress any key to exit...");
             Console.ReadKey();

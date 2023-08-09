@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LoadDataCLI {
+﻿namespace LoadDataCLI {
     public class CreateFactoryLoad {
 
         public static FactoryLoadModel? Create() {
@@ -16,34 +10,33 @@ namespace LoadDataCLI {
             // user input for load parameters
             //
             // input cartridge, repeat if null
-            string? cartridgeName = null;
-
+            string? cartridgeName;
             do {
                 Console.WriteLine("Enter the cartridge: ");
                 cartridgeName = Console.ReadLine();
-            } while(cartridgeName != null);
+            } while (cartridgeName == string.Empty);
 
             // input manufacturer, repeat if null
-            string? manufacturer = null;
-
+            string? manufacturer;
             do {
                 Console.WriteLine("Enter the manufacturer: ");
                 manufacturer = Console.ReadLine();
-            } while(manufacturer != null);
+            } while (manufacturer == string.Empty);
 
             // input bullet name, repeat if null
-            string? bulletName = null;
-
+            string? bulletName;
             do {
                 Console.WriteLine("Enter the bullet name: ");
                 bulletName = Console.ReadLine();
-            } while(bulletName != null);
+            } while (bulletName == string.Empty);
 
             // input bullet weight (double), repeat on exceptions
             double bulletWeight;
+
+            // in case input can't be parsed
             bool repeat = true;
 
-            while(!repeat) {
+            while (repeat) {
                 Console.Write("Enter the bullet weight: ");
 
                 // catch exceptions
@@ -57,8 +50,12 @@ namespace LoadDataCLI {
                     // return the completed load
                     return newLoad;
                 }
-                catch(Exception ex) {
-                    repeat = false;
+                catch (Exception ex) {
+
+                    // repeat on exceptions
+                    repeat = true;
+
+                    // print to console
                     Console.WriteLine(ex.Message);
                 }
             }

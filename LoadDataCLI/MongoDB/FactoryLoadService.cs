@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Options;
-using MongoDB.Bson;
-using MongoDB.Driver;
+﻿using MongoDB.Driver;
 
 namespace LoadDataCLI {
+    // TODO: Revisit this to double check for funciton, move the connection string for portability
     public class FactoryLoadService {
 
         private readonly IMongoCollection<FactoryLoadModel> _factoryLoadsCollection;
