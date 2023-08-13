@@ -23,7 +23,7 @@
             string powderName = SelectPowderName(cartridgeName, bulletManufacturer, bulletWeight, bulletName);
 
             // select the load
-            CustomLoad customLoad = GetLoad(cartridgeName, bulletManufacturer, bulletWeight, bulletName, powderName);
+            CustomLoadModel customLoad = GetLoad(cartridgeName, bulletManufacturer, bulletWeight, bulletName, powderName);
 
             // display the load
             // TODO
@@ -31,7 +31,7 @@
         }
 
         // TODO: get load data
-        List<CustomLoad> customLoads = new List<CustomLoad>();
+        List<CustomLoadModel> customLoads = new List<CustomLoadModel>();
 
 
         //
@@ -349,10 +349,10 @@
         //
 
         // select correct load using user selections
-        public CustomLoad GetLoad(string cartridgeName, string bulletManufacturer, double bulletWeight, string bulletName, string powderName) {
+        public CustomLoadModel GetLoad(string cartridgeName, string bulletManufacturer, double bulletWeight, string bulletName, string powderName) {
 
             // variable to hold result
-            CustomLoad result;
+            CustomLoadModel result;
 
             // TODO: test this portion carefully
             // query list using user selections
@@ -366,7 +366,7 @@
                 select load;
 
             // store query in result
-            result = (CustomLoad)query;
+            result = (CustomLoadModel)query;
 
             // return the correct load
             return result;

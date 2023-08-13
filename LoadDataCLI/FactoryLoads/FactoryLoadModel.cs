@@ -39,8 +39,10 @@ namespace LoadDataCLI {
         //
         // velocity data
         //
-        public List<string> BarrelNames { get; set; } = new List<string>();
-        public List<int> Velocities { get; set; } = new List<int>();
+        // TODO refactor to kvp?
+        // TODO add methods for updating
+        public List<string> BarrelNames { get; set; } = new();
+        public List<int> Velocities { get; set; } = new();
         //
         // constructor
         //

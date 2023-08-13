@@ -34,6 +34,9 @@
             if (userSelectionInput == "f" || userSelectionInput == "factory") {
                 FactoryLoadMain.Init();
             }
+            else if (userSelectionInput == "c" || userSelectionInput == "custom") {
+                CustomLoadMain.Init();
+            }
 
 
             Console.WriteLine("\nPress any key to exit...");
