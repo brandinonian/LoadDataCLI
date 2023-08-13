@@ -13,11 +13,13 @@
     <None Remove="CustomLoads\" />
     <None Remove="CLI\" />
     <None Remove="FactoryLoads\CLI\" />
+    <None Remove="CustomLoads\CLI\" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Utils\" />
     <Folder Include="FactoryLoads\CLI\" />
+    <Folder Include="CustomLoads\CLI\" />
   </ItemGroup>
 
   <ItemGroup>
