@@ -1,5 +1,4 @@
-﻿using System;
-namespace LoadDataCLI.CustomLoads
+﻿namespace LoadDataCLI.CustomLoads
 {
     public class CustomLoadQueries
     {
