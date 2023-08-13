@@ -34,17 +34,10 @@
             if (userSelectionInput == "f" || userSelectionInput == "factory") {
                 FactoryLoadMain.Init();
             }
-<<<<<<< HEAD
-<<<<<<< HEAD
-            
-=======
-=======
->>>>>>> main
+
             else if (userSelectionInput == "c" || userSelectionInput == "custom") {
                 CustomLoadMain.Init();
             }
-
->>>>>>> 92c4a57 (Refactoring)
 
             Console.WriteLine("\nPress any key to exit...");
             Console.ReadKey();
