@@ -1,0 +1,15 @@
+{
+  "profiles": {
+    "LoadDataCLI": {
+      "commandName": "Project"
+    },
+    "factory view": {
+      "commandName": "Project",
+      "commandLineArgs": "factory view"
+    },
+    "factory new": {
+      "commandName": "Project",
+      "commandLineArgs": "factory new"
+    }
+  }
+}

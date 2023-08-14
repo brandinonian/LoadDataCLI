@@ -1,42 +1,131 @@
-﻿namespace LoadDataCLI {
+﻿using System.Net.Mail;
+
+namespace LoadDataCLI {
     internal class Program {
         private static void Main(string[] args) {
             Console.WriteLine("Load Data");
 
-            // check arguments for factory loads
+            // store arguments
+            string loadArgument = args[0];
+            string viewArgument = args[1];
 
-            /*
-             * TODO
-             * 
-            if (args.Contains("-factory") || args.Contains("-f")) {
+            // set selection to variables
+            int loadSeleciton = 0;
+            if(loadArgument == "f" || loadArgument == "factory") {
+                loadSeleciton = 1;
+            }
+            else if(loadArgument == "c" || loadArgument == "custom") {
+                loadSeleciton = 2;
+            }
+
+            int viewSeleciton = 0;
+            if(viewArgument == "v" || viewArgument == "view") {
+                viewSeleciton = 1;
+            }
+            else if(viewArgument == "n" || viewArgument == "new") {
+                viewSeleciton = 2;
+            }
+
+            // factory view
+            if(loadSeleciton == 1 && viewSeleciton == 1) {
+
+                // mongo service
+                FactoryLoadService factoryLoadService = new FactoryLoadService();
+
+                // store the current load info
+                FactoryLoadModel? currentLoad;
+
+                // get the list of loads from mongodb
+                List<FactoryLoadModel> loadList = factoryLoadService.GetAsync().Result;
+
+                // store the view exit code
+                int viewOptionSelection;
+
+                // run factory load viewer
+                (currentLoad, viewOptionSelection) = ViewFactoryLoad.View(loadList);
+
+                // switch to handle view exit code (1 = edit, 2 = delete, 3 = back)
+                switch(viewOptionSelection) {
+
+                    //
+                    // edit selected load
+                    //
+                    case 1:
+
+                        // capture the load id
+                        string? editID = currentLoad.Id;
+
+                        // edit the current load
+                        FactoryLoadModel? newLoad = EditFactoryLoad.Edit(currentLoad); // this function needs fixing
+
+                        // update database
+                        _ = factoryLoadService.UpdateAsync(editID, newLoad);
+                        break;
+
+                    //
+                    // delete selcted load (asks for confirmation)
+                    //
+                    case 2:
+
+                        // capture the load id
+                        string? deleteID = currentLoad.Id;
+
+                        // delete the selected load
+                        int deleteAnswer = DeleteFactoryLoad.ConfirmDelete();
+
+                        // if delete function did not return null proceed with deleting the load
+                        if(deleteAnswer == 1) {
+
+                            // delete load from database
+                            _ = factoryLoadService.RemoveAsync(deleteID);
+                            break;
+                        }
+                        else {
+                            break;
+                        }
+
+                    //
+                    // go back
+                    //
+                    default:
+                        break;
+                }
 
             }
 
-            // check arguments for custom loads
-            else if (args.Contains("-custom") || args.Contains("-c")) {
+            // factory new
+            else if(loadSeleciton == 1 && viewSeleciton == 2) {
 
-            }
-            */
+                // mongo service
+                FactoryLoadService factoryLoadService = new FactoryLoadService();
 
-            // else if args contains view
+                // create new load
+                FactoryLoadModel? newLoad = CreateFactoryLoad.Create();
 
-            // else if args contains new
+                // if the new load is not null add to database
+                if(newLoad != null) {
 
-            // TODO: pass these into the functions, or refactor to handle them here 
+                    // add new load to database
+                    _ = factoryLoadService.CreateAsync(newLoad);
 
-            // select factory or custom load
-            Console.Write("Factory || Custom : ");
-
-            // capture user input
-            string userSelectionInput = Console.ReadLine().Trim().ToLower();
-
-            // allow "f" for factory
-            if (userSelectionInput == "f" || userSelectionInput == "factory") {
-                FactoryLoadMain.Init();
+                    // display load for user
+                    Console.WriteLine(newLoad);
+                }
             }
 
-            else if (userSelectionInput == "c" || userSelectionInput == "custom") {
-                CustomLoadMain.Init();
+            // custom view
+            else if(loadSeleciton == 2 && viewSeleciton == 1) {
+
+            }
+
+            // custom new
+            else if(loadSeleciton == 2 && viewSeleciton == 2) {
+
+            }
+
+            // else display help
+            else {
+                Console.WriteLine("loaddataCLI Help:\nFirst argument: <factory> <custom>\nSecond argument: <view> <new>");
             }
 
             Console.WriteLine("\nPress any key to exit...");

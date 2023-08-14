@@ -24,7 +24,7 @@
             // option to update, delete, or go back
             string? userOptionSelection;
             do {
-                Console.Write("edit || delete || back : ");
+                Console.Write("| edit | delete | back | ");
                 userOptionSelection = Console.ReadLine().Trim().ToLower();
 
                 // user options

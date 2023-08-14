@@ -1,5 +1,4 @@
-﻿using System;
-namespace LoadDataCLI {
+﻿namespace LoadDataCLI {
     public class CustomLoadMain {
         public static void Init() {
 
@@ -26,6 +25,9 @@ namespace LoadDataCLI {
                 //
                 if (userOptionSelection == "v" || userOptionSelection == "view") {
 
+                    // fetch load list
+                    List<CustomLoadModel> loadList = customLoadService.GetAsync().Result;
+
                     // store the current load info
                     CustomLoadModel? currentLoad;
 
@@ -33,7 +35,7 @@ namespace LoadDataCLI {
                     int viewOptionSelection;
 
                     // run factory load viewer
-                    (currentLoad, viewOptionSelection) = ViewCustomLoad.View(customLoadService.GetAsync().Result);
+                    (currentLoad, viewOptionSelection) = ViewCustomLoad.View(loadList);
 
                     // switch to handle view exit code (1 = edit, 2 = delete, 3 = back)
                     switch (viewOptionSelection) {
@@ -47,7 +49,7 @@ namespace LoadDataCLI {
                             string? editID = currentLoad.Id;
 
                             // edit the current load
-                            FactoryLoadModel? newLoad = EditFactoryLoad.Edit(currentLoad); // this function needs fixing
+                            CustomLoadModel? newLoad = EditCustomLoad.Edit(currentLoad); // this function needs fixing
 
                             // update database
                             _ = customLoadService.UpdateAsync(editID, newLoad);

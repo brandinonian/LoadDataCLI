@@ -1,10 +1,10 @@
-﻿using System;
-namespace LoadDataCLI.CustomLoads.CLI
+﻿namespace LoadDataCLI
 {
     public class EditCustomLoad
     {
-        public EditCustomLoad()
-        {
+        public static CustomLoadModel Edit(CustomLoadModel data) {
+
+            return new CustomLoadModel();
         }
     }
 }

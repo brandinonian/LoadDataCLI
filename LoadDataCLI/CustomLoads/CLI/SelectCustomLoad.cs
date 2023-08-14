@@ -8,6 +8,8 @@ namespace LoadDataCLI {
             // select the bullet
 
             // select the powder
+
+            return new CustomLoadModel();
         }
     }
 }

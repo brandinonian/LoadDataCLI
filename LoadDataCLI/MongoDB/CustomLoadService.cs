@@ -1,34 +1,33 @@
-﻿using System;
-using MongoDB.Driver;
+﻿using MongoDB.Driver;
 
 namespace LoadDataCLI {
     public class CustomLoadService {
-        public CustomLoadService() {
-            private readonly IMongoCollection<FactoryLoadModel> _factoryLoadsCollection;
+
+        private readonly IMongoCollection<CustomLoadModel> _customLoadsCollection;
 
         public CustomLoadService() {
             MongoClient mongoClient = new MongoClient("mongodb://localhost:27017");
 
             IMongoDatabase mongoDatabase = mongoClient.GetDatabase("ReloadingData");
 
-            _factoryLoadsCollection = mongoDatabase.GetCollection<FactoryLoadModel>("FactoryLoads");
+            _customLoadsCollection = mongoDatabase.GetCollection<CustomLoadModel>("CustomLoads");
         }
 
-        public async Task<List<FactoryLoadModel>> GetAsync() =>
-            await _factoryLoadsCollection.Find(_ => true).ToListAsync();
+        public async Task<List<CustomLoadModel>> GetAsync() =>
+            await _customLoadsCollection.Find(_ => true).ToListAsync();
 
-        public async Task<FactoryLoadModel?> GetAsync(string id) =>
-            await _factoryLoadsCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
+        public async Task<CustomLoadModel?> GetAsync(string id) =>
+            await _customLoadsCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
 
-        public async Task CreateAsync(FactoryLoadModel newFactoryLoad) =>
-            await _factoryLoadsCollection.InsertOneAsync(newFactoryLoad);
+        public async Task CreateAsync(CustomLoadModel newFactoryLoad) =>
+            await _customLoadsCollection.InsertOneAsync(newFactoryLoad);
 
-        public async Task UpdateAsync(string id, FactoryLoadModel updatedFactoryLoad) =>
-            await _factoryLoadsCollection.ReplaceOneAsync(x => x.Id == id, updatedFactoryLoad);
+        public async Task UpdateAsync(string id, CustomLoadModel updatedFactoryLoad) =>
+            await _customLoadsCollection.ReplaceOneAsync(x => x.Id == id, updatedFactoryLoad);
 
         public async Task RemoveAsync(string id) =>
-            await _factoryLoadsCollection.DeleteOneAsync(x => x.Id == id);
-    }
+            await _customLoadsCollection.DeleteOneAsync(x => x.Id == id);
     }
 }
+
 
