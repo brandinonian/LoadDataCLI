@@ -182,7 +182,21 @@ namespace LoadDataCLI {
             // custom new
             else if(loadSeleciton == 2 && viewSeleciton == 2) {
                  
-                // TODO
+                // mongo service
+                CustomLoadService customLoadService = new CustomLoadService();
+
+                // create new load
+                CustomLoadModel? newLoad = CreateCustomLoad.Create();
+
+                // if the new load is not null add to database
+                if(newLoad != null) {
+
+                    // add new load to database
+                    _ = customLoadService.CreateAsync(newLoad);
+
+                    // display load for user
+                    Console.WriteLine(newLoad);
+                }
             }
 
             // else display help

@@ -53,6 +53,10 @@ namespace LoadDataCLI {
             this.BulletWeight = BulletWeight;
         }
         //
+        // properties needed for creating a new load
+        //
+        public static readonly string[] propertyNames = { "cartridgeName", "manufacturerName", "bulletString" };
+        //
         // return an abbreviated description string
         //
         public string ShortString() {

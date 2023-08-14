@@ -4,7 +4,8 @@
     {
         public static CustomLoadModel Edit(CustomLoadModel data) {
 
-            return new CustomLoadModel();
+            // TODO
+            throw new NotImplementedException();
         }
     }
 }

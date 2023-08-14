@@ -8,7 +8,7 @@ namespace LoadDataCLI {
         //
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id {
+        public string? Id {
             get; set;
         }
         //
@@ -58,10 +58,10 @@ namespace LoadDataCLI {
         //
         // primer info
         //
-        public string PrimerName {
+        public string PrimerManufacturer {
             get; set;
         }
-        public string PrimerManufacturer {
+        public string PrimerName {
             get; set;
         }
         public string PrimerString {
@@ -72,22 +72,54 @@ namespace LoadDataCLI {
         //
         // powder
         //
-        public string PowderName {
+        public string PowderManufacturer {
             get; set;
         }
-        public string PowderManufacter {
+        public string PowderName {
             get; set;
         }
         public string PowderString {
             get {
-                return $"{PowderManufacter} {PowderName}";
+                return $"{PowderManufacturer} {PowderName}";
             }
         }
         //
         // indexes need to be linked
         //
-        public List<double> ChargeWeights { get; set; } = new List<double>();
-        public List<int> Velocities { get; set; } = new List<int>();
+        public List<double> ChargeWeights { get; set; } = new();
+        public List<int> Velocities { get; set; } = new();
+        //
+        // constructor
+        //
+        public CustomLoadModel(string CartridgeName,
+                               double OverallLength,
+                               string BarrelName,
+                               string BulletName,
+                               string BulletManufacturer,
+                               double BulletWeight,
+                               string BrassManufacturer,
+                               double BrassAnnealedTime,
+                               double BrassLength,
+                               int BrassNumberFirings,
+                               string PrimerManufacturer,
+                               string PrimerName,
+                               string PowderManufacturer,
+                               string PowderName) {
+            this.CartridgeName = CartridgeName;
+            this.OverallLength = OverallLength;
+            this.BarrelName = BarrelName;
+            this.BulletName = BulletName;
+            this.BulletManufacturer = BulletManufacturer;
+            this.BulletWeight = BulletWeight;
+            this.BrassManufacturer = BrassManufacturer;
+            this.BrassLength = BrassLength;
+            this.BrassAnnealedTime = BrassAnnealedTime;
+            this.BrassNumberFirings = BrassNumberFirings;
+            this.PrimerManufacturer = PrimerManufacturer;
+            this.PrimerName = PrimerName;
+            this.PowderManufacturer = PowderManufacturer;
+            this.PowderName = PowderName;
+        }
         //
         // return an abbreviated description string
         //
