@@ -53,9 +53,9 @@ namespace LoadDataCLI {
             this.BulletWeight = BulletWeight;
         }
         //
-        // ToString()
+        // return an abbreviated description string
         //
-        public override string ToString() {
+        public string ShortString() {
 
             // add properties to string
             string output = $"{ManufacturerName}\t\t{CartridgeName}" +

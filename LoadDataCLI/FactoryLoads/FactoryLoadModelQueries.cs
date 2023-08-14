@@ -23,7 +23,7 @@
 
         }
 
-        // retrieve list of manufacturers
+        // get list of manufacturers
         public static List<string> GetManufacturerList(List<FactoryLoadModel> data) {
 
             // list to hold results
@@ -44,7 +44,7 @@
             return result;
         }
 
-        // retrieve list of bullet strings
+        // get list of bullet strings
         public static List<string> GetBulletStringList(List<FactoryLoadModel> data) {
 
             // list to hold results
@@ -65,7 +65,7 @@
             return result;
         }
 
-        // retrieve list of bullet weights
+        // get list of bullet weights
         public static List<double> GetBulletWeightList(List<FactoryLoadModel> data) {
 
             // list to hold results
@@ -86,7 +86,7 @@
             return result;
         }
 
-        // retrieve list of bullet names
+        // get list of bullet names
         public static List<string> GetBulletNameList(List<FactoryLoadModel> data) {
 
             // list to hold results

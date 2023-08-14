@@ -8,81 +8,91 @@ namespace LoadDataCLI {
         //
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string? Id {
+        public string Id {
             get; set;
         }
         //
         // cartridge info
         //
-        public string? CartridgeName {
+        public string CartridgeName {
             get; set;
         }
-
-        public double? OverallLength {
+        public double OverallLength {
             get; set;
         }
-
-        public string? BarrelName {
+        public string BarrelName {
             get; set;
         }
         //
-        // bullet infod
+        // bullet info
         //
-        public string? BulletName {
+        public string BulletName {
             get; set;
         }
-
-        public string? BulletManufacturer {
+        public string BulletManufacturer {
             get; set;
         }
-
-        public double? BulletWeight {
+        public double BulletWeight {
             get; set;
+        }
+        public string BulletString {
+            get {
+                return $"{BulletManufacturer} {BulletWeight} gr {BulletName}";
+            }
         }
         //
         // brass info
         //
-        public string? BrassManufacturer {
+        public string BrassManufacturer {
             get; set;
         }
-
-        public double? BrassAnnealedTime {
+        public double BrassAnnealedTime {
             get; set;
         }
-
-        public double? BrassLength {
+        public double BrassLength {
             get; set;
         }
-
-        public int? BrassNumberFirings {
+        public int BrassNumberFirings {
             get; set;
         }
         //
         // primer info
         //
-        public string? PrimerName {
+        public string PrimerName {
             get; set;
         }
-
-        public string? PrimerManufacturer {
+        public string PrimerManufacturer {
             get; set;
+        }
+        public string PrimerString {
+            get {
+                return $"{PrimerManufacturer} {PrimerName}";
+            }
         }
         //
         // powder
         //
-        public string? PowderName {
+        public string PowderName {
             get; set;
         }
-
-        public string? PowderManufacter {
+        public string PowderManufacter {
             get; set;
+        }
+        public string PowderString {
+            get {
+                return $"{PowderManufacter} {PowderName}";
+            }
         }
         //
         // indexes need to be linked
         //
         public List<double> ChargeWeights { get; set; } = new List<double>();
-
         public List<int> Velocities { get; set; } = new List<int>();
-
+        //
+        // return an abbreviated description string
+        //
+        public string ShortString() {
+            return $"Cartridge: {CartridgeName} Bullet: {BulletString}\nPowder: {PowderString} Primer: {PrimerString} Brass: {BrassManufacturer}\nBarrel: {BarrelName}";
+        }
     }
 }

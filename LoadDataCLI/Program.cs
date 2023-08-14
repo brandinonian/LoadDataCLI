@@ -116,11 +116,73 @@ namespace LoadDataCLI {
             // custom view
             else if(loadSeleciton == 2 && viewSeleciton == 1) {
 
+                // mongo service
+                CustomLoadService customLoadService = new CustomLoadService();
+
+                // store the current load info
+                CustomLoadModel? currentLoad;
+
+                // get the list of loads from mongodb
+                List<CustomLoadModel> loadList = customLoadService.GetAsync().Result;
+
+                // store the view exit code
+                int viewOptionSelection;
+
+                // run factory load viewer
+                (currentLoad, viewOptionSelection) = ViewCustomLoad.View(loadList);
+
+                // switch to handle view exit code (1 = edit, 2 = delete, 3 = back)
+                switch(viewOptionSelection) {
+
+                    //
+                    // edit selected load
+                    //
+                    case 1:
+
+                        // capture the load id
+                        string? editID = currentLoad.Id;
+
+                        // edit the current load
+                        CustomLoadModel? newLoad = EditCustomLoad.Edit(currentLoad); // this function needs fixing
+
+                        // update database
+                        _ = customLoadService.UpdateAsync(editID, newLoad);
+                        break;
+
+                    //
+                    // delete selcted load (asks for confirmation)
+                    //
+                    case 2:
+
+                        // capture the load id
+                        string? deleteID = currentLoad.Id;
+
+                        // delete the selected load
+                        int deleteAnswer = DeleteFactoryLoad.ConfirmDelete(); // TODO rename this guy
+
+                        // if delete function did not return null proceed with deleting the load
+                        if(deleteAnswer == 1) {
+
+                            // delete load from database
+                            _ = customLoadService.RemoveAsync(deleteID);
+                            break;
+                        }
+                        else {
+                            break;
+                        }
+
+                    //
+                    // go back
+                    //
+                    default:
+                        break;
+                }
             }
 
             // custom new
             else if(loadSeleciton == 2 && viewSeleciton == 2) {
-
+                 
+                // TODO
             }
 
             // else display help

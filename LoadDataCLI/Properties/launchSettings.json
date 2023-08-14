@@ -10,6 +10,10 @@
     "factory new": {
       "commandName": "Project",
       "commandLineArgs": "factory new"
+    },
+    "custom view": {
+      "commandName": "Project",
+      "commandLineArgs": "custom view"
     }
   }
 }
