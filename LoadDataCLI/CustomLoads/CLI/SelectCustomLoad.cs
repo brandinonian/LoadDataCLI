@@ -1,6 +1,4 @@
-﻿using LoadDataCLI.CustomLoads;
-
-namespace LoadDataCLI {
+﻿namespace LoadDataCLI {
     public class SelectCustomLoad {
         public static CustomLoadModel Select(List<CustomLoadModel> data) {
 

@@ -1,4 +1,4 @@
-﻿namespace LoadDataCLI.CustomLoads {
+﻿namespace LoadDataCLI {
     public class CustomLoadFilters {
         
         // filter by cartridge
