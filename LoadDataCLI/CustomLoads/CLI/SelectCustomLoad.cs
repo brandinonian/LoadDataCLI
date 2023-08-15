@@ -41,6 +41,7 @@
             List<string> cartridgeList = CustomLoadQueries.GetCartridgeList(data);
 
             // display list
+            Console.WriteLine();
             for(int i = 0; i < cartridgeList.Count; i++) {
                 Console.WriteLine($"{i + 1}: {cartridgeList[i]}");
             }
@@ -74,6 +75,7 @@
             List<string> bulletStringList = CustomLoadQueries.GetBulletStringList(data);
 
             // display list
+            Console.WriteLine();
             for(int i = 0; i < bulletStringList.Count; i++) { 
                 Console.WriteLine($"{i + 1}: {bulletStringList[i]}");
             }
@@ -104,9 +106,10 @@
             int userSelection = 0;
 
             // get list
-            List<string> powderStringList = CustomLoadQueries.GetBulletStringList(data);
+            List<string> powderStringList = CustomLoadQueries.GetPowderStringList(data);
 
             // display list
+            Console.WriteLine();
             for(int i = 0; i < powderStringList.Count; i++) { 
                 Console.WriteLine($"{i + 1}: {powderStringList[i]}");
             }
@@ -137,6 +140,7 @@
             int userSelection = 0;
 
             // display the list of loads
+            Console.WriteLine();
             for (int i = 0; i < data.Count; i++) {
                 Console.WriteLine($"{i + 1}: {data[i].ShortString()}");
             }

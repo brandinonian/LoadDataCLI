@@ -24,12 +24,13 @@ namespace LoadDataCLI {
                                         "Powder Name" };
 
             // bool for repeating
-            bool repeat = true;
+            bool repeat;
 
             // variable for user selection
             int userSelection = 0;
 
             // display each item with a number
+            Console.WriteLine();
             for(int i = 0; i < optionsList.Length; i++) {
                 Console.WriteLine($"{i + 1}. {optionsList[i]}");
             }
@@ -44,8 +45,10 @@ namespace LoadDataCLI {
                 try {
 
                     userSelection = int.Parse(Console.ReadLine());
+                    repeat = false;
                 }
                 catch(Exception e) {
+                    repeat = true;
                     Console.WriteLine(e);
                 }
 

@@ -145,6 +145,11 @@
 
                         // update database
                         _ = customLoadService.UpdateAsync(editID, newLoad);
+
+                        // display the new load
+                        Console.WriteLine();
+                        Console.WriteLine(newLoad);
+
                         break;
 
                     //
