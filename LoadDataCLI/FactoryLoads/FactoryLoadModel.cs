@@ -3,17 +3,15 @@ using MongoDB.Bson;
 
 namespace LoadDataCLI {
     public class FactoryLoadModel {
-        //
+        
         // mongodb id
-        //
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id {
             get; set;
         }
-        //
+        
         // load info
-        //
         public string CartridgeName {
             get; set;
         }
@@ -36,29 +34,23 @@ namespace LoadDataCLI {
                 return GetVelocityTableString();
             }
         }
-        //
+        
         // velocity data
         //
         // TODO refactor to kvp?
         // TODO add methods for updating
         public List<string> BarrelNames { get; set; } = new();
         public List<int> Velocities { get; set; } = new();
-        //
+        
         // constructor
-        //
         public FactoryLoadModel(string CartridgeName, string ManufacturerName, string BulletName, double BulletWeight) {
             this.CartridgeName = CartridgeName;
             this.ManufacturerName = ManufacturerName;
             this.BulletName = BulletName;
             this.BulletWeight = BulletWeight;
         }
-        //
-        // properties needed for creating a new load
-        //
-        public static readonly string[] propertyNames = { "cartridgeName", "manufacturerName", "bulletString" };
-        //
+        
         // return an abbreviated description string
-        //
         public string ShortString() {
 
             // add properties to string
@@ -68,9 +60,8 @@ namespace LoadDataCLI {
             // return output string
             return output;
         }
-        //
+        
         // Velocity Table to string
-        //
         public string GetVelocityTableString() {
 
             // table header
@@ -83,6 +74,11 @@ namespace LoadDataCLI {
 
             // return output string
             return output;
+        }
+
+        // ToString()
+        public override string ToString() {
+            return $"{ShortString()} + {GetVelocityTableString()}";
         }
     }
 }

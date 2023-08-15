@@ -3,17 +3,15 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace LoadDataCLI {
     public class CustomLoadModel {
-        //
+        
         // mongodb id
-        //
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id {
             get; set;
         }
-        //
+        
         // cartridge info
-        //
         public string CartridgeName {
             get; set;
         }
@@ -23,9 +21,8 @@ namespace LoadDataCLI {
         public string BarrelName {
             get; set;
         }
-        //
+        
         // bullet info
-        //
         public string BulletName {
             get; set;
         }
@@ -40,9 +37,8 @@ namespace LoadDataCLI {
                 return $"{BulletManufacturer} {BulletWeight} gr {BulletName}";
             }
         }
-        //
+        
         // brass info
-        //
         public string BrassManufacturer {
             get; set;
         }
@@ -55,9 +51,8 @@ namespace LoadDataCLI {
         public int BrassNumberFirings {
             get; set;
         }
-        //
+        
         // primer info
-        //
         public string PrimerManufacturer {
             get; set;
         }
@@ -69,9 +64,8 @@ namespace LoadDataCLI {
                 return $"{PrimerManufacturer} {PrimerName}";
             }
         }
-        //
+        
         // powder
-        //
         public string PowderManufacturer {
             get; set;
         }
@@ -83,14 +77,12 @@ namespace LoadDataCLI {
                 return $"{PowderManufacturer} {PowderName}";
             }
         }
-        //
+        
         // indexes need to be linked
-        //
         public List<double> ChargeWeights { get; set; } = new();
         public List<int> Velocities { get; set; } = new();
-        //
+        
         // constructor
-        //
         public CustomLoadModel(string CartridgeName,
                                double OverallLength,
                                string BarrelName,
@@ -120,11 +112,30 @@ namespace LoadDataCLI {
             this.PowderManufacturer = PowderManufacturer;
             this.PowderName = PowderName;
         }
-        //
+        
         // return an abbreviated description string
-        //
         public string ShortString() {
-            return $"Cartridge: {CartridgeName} Bullet: {BulletString}\nPowder: {PowderString} Primer: {PrimerString} Brass: {BrassManufacturer}\nBarrel: {BarrelName}";
+            return $"Cartridge: {CartridgeName} Bullet: {BulletString}\nPrimer: {PrimerString} Brass: {BrassManufacturer}\nPowder: {PowderString} Barrel: {BarrelName}";
+        }
+
+        // Velocity Table to string
+        public string GetVelocityTableString() {
+
+            // table header
+            string output = $"\n\nCharge Weight\t\tVelocity\n";
+
+            // add each barrel and velocity to the string
+            for (int i = 0; i < ChargeWeights.Count; i++) {
+                output += $"{ChargeWeights[i]}\t{Velocities[i]}\n";
+            }
+
+            // return output string
+            return output;
+        }
+
+        // ToString()
+        public override string ToString() {
+            return $"{ShortString()} + {GetVelocityTableString()}";
         }
     }
 }
