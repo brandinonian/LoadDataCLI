@@ -1,6 +1,4 @@
-﻿using System.Net.Mail;
-
-namespace LoadDataCLI {
+﻿namespace LoadDataCLI {
     internal class Program {
         private static void Main(string[] args) {
             Console.WriteLine("Load Data");

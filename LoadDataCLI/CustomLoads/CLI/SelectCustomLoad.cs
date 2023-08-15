@@ -50,7 +50,7 @@ namespace LoadDataCLI {
             }
 
             // ask the user to make a selection
-            Console.WriteLine("Select the cartridge: ");
+            Console.Write("\nSelect the cartridge: ");
 
             // capture user input
             try {
@@ -83,7 +83,7 @@ namespace LoadDataCLI {
             }
 
             // ask user to make a selection
-            Console.Write("Select a bullet: ");
+            Console.Write("\nSelect a bullet: ");
 
             // capture user input
             try {
@@ -116,7 +116,7 @@ namespace LoadDataCLI {
             }
 
             // ask user to make a selection
-            Console.Write("Select a powder: ");
+            Console.Write("\nSelect a powder: ");
 
             // capture user input
             try {
@@ -146,7 +146,7 @@ namespace LoadDataCLI {
             }
 
             // ask user to select a load
-            Console.Write("Select a load: ");
+            Console.Write("\nSelect a load: ");
 
             // capture user input
             try {
