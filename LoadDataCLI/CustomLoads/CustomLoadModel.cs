@@ -77,7 +77,14 @@ namespace LoadDataCLI {
                 return $"{PowderManufacturer} {PowderName}";
             }
         }
-        
+
+        // velocity table string for display
+        public string VelocityTableString {
+            get {
+                return GetVelocityTableString();
+            }
+        }
+
         // indexes need to be linked
         public List<double> ChargeWeights { get; set; } = new();
         public List<int> Velocities { get; set; } = new();

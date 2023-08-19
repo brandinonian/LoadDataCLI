@@ -1,5 +1,5 @@
 ﻿namespace LoadDataCLI {
-    public class FactoryLoadModelQueries {
+    public class FactoryLoadQueries {
 
         // get list of cartirdges
         public static List<string> GetCartridgeList(List<FactoryLoadModel> data) {

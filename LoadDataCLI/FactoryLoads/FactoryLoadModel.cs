@@ -29,6 +29,8 @@ namespace LoadDataCLI {
                 return $"{BulletWeight} gr {BulletName}";
             }
         }
+
+        // velocity table string for display
         public string VelocityTableString {
             get {
                 return GetVelocityTableString();

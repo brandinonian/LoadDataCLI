@@ -1,5 +1,5 @@
 ﻿namespace LoadDataCLI {
-    public class DeleteFactoryLoad {
+    public class DeleteUtils {
 
         // ask the user if they are sure they want to delete before proceeding
         public static int ConfirmDelete() {
