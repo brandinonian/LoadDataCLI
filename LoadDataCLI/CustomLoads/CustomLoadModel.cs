@@ -85,7 +85,7 @@ namespace LoadDataCLI {
             }
         }
 
-        // indexes need to be linked
+        // TODO pair values and add methods for updating
         public List<double> ChargeWeights { get; set; } = new();
         public List<int> Velocities { get; set; } = new();
         

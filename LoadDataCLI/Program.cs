@@ -161,7 +161,7 @@
                         string? deleteID = currentLoad.Id;
 
                         // delete the selected load
-                        int deleteAnswer = DeleteUtils.ConfirmDelete(); // TODO rename this guy
+                        int deleteAnswer = DeleteUtils.ConfirmDelete();
 
                         // if delete function did not return null proceed with deleting the load
                         if(deleteAnswer == 1) {
